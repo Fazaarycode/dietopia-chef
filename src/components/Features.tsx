@@ -1,5 +1,5 @@
 
-import { Chef, Clock, Heart, Sparkles } from "lucide-react";
+import { UtensilsCrossed, Clock, Heart, Sparkles } from "lucide-react";
 
 const features = [
   {
@@ -13,7 +13,7 @@ const features = [
     description: "Customized to your specific dietary needs and restrictions",
   },
   {
-    icon: Chef,
+    icon: UtensilsCrossed,
     title: "Recipe Database",
     description: "Access to thousands of delicious, chef-curated recipes",
   },
