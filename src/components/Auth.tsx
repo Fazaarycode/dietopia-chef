@@ -4,6 +4,7 @@ import { useAuth } from "@/lib/auth-context";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
+import { useNavigate } from "react-router-dom";
 
 export const Auth = () => {
   const [email, setEmail] = useState("");
@@ -11,6 +12,7 @@ export const Auth = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false);
   const { signIn, signUp } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,6 +31,8 @@ export const Auth = () => {
           title: "Welcome back!",
           description: "Successfully signed in.",
         });
+        // Redirect to landing page after successful sign in
+        navigate("/meal-plan");
       }
     } catch (error: any) {
       toast({
