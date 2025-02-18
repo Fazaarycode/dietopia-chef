@@ -1,6 +1,8 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/lib/auth-context";
 import {
   Select,
   SelectContent,
@@ -20,6 +22,21 @@ const dietaryPreferences = [
 
 export const PreferencesForm = () => {
   const [diet, setDiet] = useState("Any");
+  const navigate = useNavigate();
+  const { user } = useAuth();
+
+  const handleGeneratePlan = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    
+    // If user is not authenticated, redirect to auth page
+    if (!user) {
+      navigate('/auth');
+      return;
+    }
+
+    // If authenticated, navigate to meal plan page
+    navigate('/meal-plan', { state: { diet } });
+  };
 
   return (
     <div id="preferences" className="py-24 bg-sage-50">
@@ -53,10 +70,7 @@ export const PreferencesForm = () => {
             </div>
             <Button
               className="w-full bg-sage-400 hover:bg-sage-500 text-white py-6 text-lg rounded-xl transition-all duration-200"
-              onClick={(e) => {
-                e.preventDefault();
-                // TODO: Handle form submission
-              }}
+              onClick={handleGeneratePlan}
             >
               Generate Meal Plan
             </Button>

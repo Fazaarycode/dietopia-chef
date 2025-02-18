@@ -8,6 +8,7 @@ import { AuthProvider } from "@/lib/auth-context";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import { Auth } from "./components/Auth";
+import MealPlan from "./pages/MealPlan";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => (
           <Routes>
             <Route path="/auth" element={<Auth />} />
             <Route path="/" element={<Index />} />
+            <Route path="/meal-plan" element={<MealPlan />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
