@@ -2,10 +2,17 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 
-// Using Lovable's Supabase integration environment variables
+// Using the correct project URL and anon key
 const supabase = createClient(
-  "https://pnpxbmfzriwvdqdbvbsf.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBucHhibWZ6cml3dmRxZGJ2YnNmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTExODgxMTAsImV4cCI6MjAyNjc2NDExMH0.nHIjLuQoVZZVY54wScNdNolwGNuV4ssl2r0ZXYAIAOM"
+  "https://ybmdyqcjvuplybynatqh.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlibWR5cWNqdnVwbHlieW5hdHFoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk4NjI0NDAsImV4cCI6MjA1NTQzODQ0MH0.BprfWg3Dlidp5fgwOIXh2MJjhjNOPylmuvOx7G5HkAg",
+  {
+    auth: {
+      persistSession: true,
+      autoRefreshToken: true,
+      detectSessionInUrl: true,
+    },
+  }
 );
 
 type AuthContextType = {
